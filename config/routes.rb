@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   get '/register', to: 'register#index'
 
-  get '/', to: 'api#index', constraints: {subdomain: 'api'}
+  get '/admin', to: 'admin#index'
+
+  #get '/', to: 'api#index', constraints: {subdomain: 'api'}
 
   devise_for :users
   root 'home#index'

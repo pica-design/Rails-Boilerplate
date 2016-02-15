@@ -10,6 +10,23 @@ Jason Walker for Designing the Class
 Methods
 ==================
 
+constructor
+  - Input:
+      - nane
+      - capabilities
+  - Output:
+  - Description:
+      Set up a new role
+
+add_cap
+
+remove_cap
+
+has_cap
+
 ==================
 Variables
 ==================
+
+name
+capabilities

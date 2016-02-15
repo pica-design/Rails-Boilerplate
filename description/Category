@@ -10,6 +10,22 @@ Jason Walker for Designing the Class
 Methods
 ==================
 
+get_label()   X-Ref
+Get the human readable label
+
+return: string|null
+
+
+get_term()   X-Ref
+Get the category identifier
+
+return: string|null
+
 ==================
 Variables
 ==================
+
+- Name
+- Slug
+- Parent
+- Description

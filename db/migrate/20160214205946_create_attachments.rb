@@ -1,6 +1,7 @@
 class CreateAttachments < ActiveRecord::Migration
   def change
     create_table :attachments do |t|
+
       t.text :meta
       t.integer :user_id, null: false, default: 1
       t.text :content

@@ -19,6 +19,8 @@ constructor
       This creates a new attachment with the given input variables.
       The constructor sets the date added, name is auto generated, guid is auto generated and both can be changed later.
 
+ADD PAPERCLIP
+
 ==================
 Functions that
 Rails has built in
@@ -29,7 +31,7 @@ get instance Post.find_by_author :author_id (or something like that)
 Variables
 ==================
 - ID
-- author (has_many) (wordpress is has_one, clients have asked for this)
+- user (has_many) (wordpress is has_one, clients have asked for this)
 - date
 - date_gmt
 - content

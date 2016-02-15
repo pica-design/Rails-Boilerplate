@@ -1,3 +1,3 @@
-class Attachment < ActiveRecord::Base
+class Attachment < Post
   belongs_to :user
 end

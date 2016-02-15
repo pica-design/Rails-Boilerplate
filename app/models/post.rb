@@ -5,11 +5,11 @@ class Post < ActiveRecord::Base
   attr_accessor :content
   attr_accessor :title
   attr_accessor :excerpt
-  attr_accessor :author
+  attr_accessor :user_id
   attr_accessor :menu_order
 
   #validations
-  validates :author, presence: true
+  validates :user_id, presence: true
   validates :status, presence: true
   validates :guid, presence: true, format: { :with => URI.regexp(%w(http https)), :message => "Valid GUID required" }
   validates :menu_order, presence: true, uniqueness: true

@@ -1,0 +1,20 @@
+/*
+*= require plugins/pace/pace-theme-flash
+*= require bootstrapv3/css/bootstrap.min
+*= require bootstrapv3/css/bootstrap-theme.min
+*= require font-awesome/css/font-awesome
+*= require animate.min
+*= require jquery-scrollbar/jquery.scrollbar
+*= require webarch/css/webarch.css
+*/
+
+//Core Compass
+@import "compass";
+@import "compass/css3";
+
+//Import the core files for layouts.
+@import "compass/layout";
+@import "compass/css3/user-interface";
+
+@import "admin/style.scss";
+

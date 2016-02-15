@@ -1,0 +1,35 @@
+class User
+
+==================
+Notes
+==================
+Credits to WordPress for similarities
+Jason Walker for Designing the Class
+
+==================
+Methods
+==================
+constructor
+  - Input: (login, pass, email, role(optional), status, display_name (optional))
+  - Output:
+  - Description:
+deconstructor
+  - Input: (id)
+  - Output:
+      - if unsuccessful 0
+      - if successful 1
+  - Description
+      Remove the user from the database. You must do something with their data. (assign it or delete it)
+
+==================
+Variables
+==================
+- ID
+- user_login
+- user_pass
+- user_email
+- user_url
+- date_registered
+- status
+- display_name
+- role (has_many)

@@ -13,20 +13,20 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: username
-  password: password
-  host: domain.com
+  username: root_remote
+  password: rocko04841
+  host: sej.daphynci.com
 
 development:
   <<: *default
-  database: username_development
+  database: picaCMS_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: username_test
+  database: picaCMS_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: database_production
+  database: picaCMS_production
   username: username
   password: <%= ENV['DAPHYNCI_DATABASE_PASSWORD'] %>

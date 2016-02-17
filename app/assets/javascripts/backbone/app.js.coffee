@@ -12,7 +12,14 @@ window.App =
   redirectHashBang: ->
     window.location = window.location.hash.substring(2)
   init: ->
-     new App.Routers.ApplicationRouter()
+
+     # If we are in the admin section load the admin router
+     # else load the regular router
+     if document.location.pathname.indexOf("/admin") == 0
+        new App.Routers.AdminRouter()
+     else
+      new App.Routers.ApplicationRouter()
+
      Backbone.history.start pushState: true
 
   # DOM is ready, are we routing a #!?

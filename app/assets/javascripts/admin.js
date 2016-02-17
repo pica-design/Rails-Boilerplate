@@ -2,17 +2,22 @@
 // All this logic will automatically be available in application.js.
 // You can use CoffeeScript in this file: http://coffeescript.org/
 //= require jquery
+//= require tether
+//= require bootstrap-sprockets
 //= require plugins/pace/pace.min
-//= require plugins/bootstrapv3/js/bootstrap.min
 //= require plugins/jquery-block-ui/jqueryblockui.min
 //= require plugins/jquery-unveil/jquery.unveil.min
 //= require plugins/jquery-scrollbar/jquery.scrollbar.min
 //= require plugins/jquery-numberAnimate/jquery.animateNumbers
 //= require plugins/jquery-validation/js/jquery.validate.min
-//= require plugins/bootstrap-select2/select2.min.js
+//= require plugins/bootstrap-select2/select2.min
+//= require plugins/jquery-datatable/js/jquery.dataTables.min
+//= require plugins/jquery-datatable/extra/js/dataTables.tableTools.min
+//= require plugins/datatables-responsive/js/datatables.responsive
+//= require plugins/datatables-responsive/js/lodash.min
 
 
-(function($) {
+
 
     'use strict';
 
@@ -307,7 +312,13 @@
         });
 
         $('#user-options').click(function () {
-            $('#my-task-list').popover('hide');
+            // $('#my-task-list').popover('hide');
+            $('#my-task-list').popover({
+                html: true,
+                content: function () {
+                    return $('#notification-list').html();
+                }
+            });
         });
 
         $('table th .checkall').on('click', function () {
@@ -451,8 +462,6 @@
     $.Webarch = new Webarch();
     $.Webarch.Constructor = Webarch;
 
-})(window.jQuery);
-
 // DEMO STUFF
 $(document).ready(function () {
 
@@ -583,6 +592,23 @@ $(function() {
 /* Webarch Admin Dashboard
 -----------------------------------------------------------------*/
 $(document).ready(function() {
+
+    $('#my-task-list').popover({
+            html: true,
+            content: function () {
+                return $('#notification-list').html();
+            }
+        });
+
+        $('#user-options').click(function () {
+            // $('#my-task-list').popover('hide');
+            $('#my-task-list').popover({
+                html: true,
+                content: function () {
+                    return $('#notification-list').html();
+                }
+            });
+        });
   var conversation = [];
   $('.user-details-wrapper').click(function(){
       set_user_details($(this).attr('data-user-name'),$(this).attr('data-chat-status'));

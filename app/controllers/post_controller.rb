@@ -18,4 +18,3 @@ class PostController < ApplicationController
     Post.destroy(params[:id])
   end
 end
-q

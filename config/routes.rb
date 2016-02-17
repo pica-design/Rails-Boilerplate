@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/register', to: 'register#index'
 
   get '/admin', to: 'admin#index'
+  get '/admin/updates', to: 'admin#updates'
+  get '/admin/users', to: 'admin#users'
 
   #get '/', to: 'api#index', constraints: {subdomain: 'api'}
 

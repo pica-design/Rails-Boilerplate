@@ -4,19 +4,20 @@ class App.Views.Header extends Backbone.View
   events:
     'click .logo': 'logo'
     'click .chat-menu-toggle': 'toggle_chat'
-    # 'click #my-task-list': 'toggle_tasks'
+    'click #my-task-list': 'toggle_tasks'
 
   initialize: ->
     @render();
-    $('#my-task-list').popover({
-        html: true,
-        trigger: 'click'
-        content: $('#notification-list').html();
-    });
+    $.Webarch.init()
   render: ->
     @$el.html @template
   logo: ->
     alert('Logo')
   toggle_chat: ->
     $.Webarch.toggleRightSideBar()
-  toggle_tasks: ->
+  toggle_tasks: (ev) ->
+     $(this).find('#my-task-list').popover({
+        html: true,
+        trigger: 'click'
+        content: $('#notification-list').html();
+    });

@@ -1,6 +1,6 @@
 class AdminController < ApplicationController
   def index
-    render layout: "/layouts/admin"
+    super
   end
 
   def updates

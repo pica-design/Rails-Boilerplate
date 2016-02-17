@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'securerandom'
+
+30.times do |i|
+  role = Role.create(name: SecureRandom.hex, slug: "password + ##{i}")
+  role.save
+end

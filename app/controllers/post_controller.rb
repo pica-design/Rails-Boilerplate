@@ -1,20 +1,14 @@
 class PostController < ApplicationController
+  def index
+    super
+  end
+
   def new
-    if request.post?
-
-    end
   end
 
-  #read by ID
-  def read
-    @post = Post.find(params[:id])
+  def remove
   end
 
-  def update
-    @post
-  end
-
-  def destroy
-    Post.destroy(params[:id])
+  def edit
   end
 end

@@ -41,9 +41,6 @@
                   <div class="row-fluid">
                     <%= form_for [:admin, @post] do |f| %>
             <textarea id="text-editor" placeholder="Enter text ..." class="form-control" rows="10"></textarea>
-            <div class="actions">
-              <%= f.submit %>
-            </div>
             </div>
           </div>
         </div>
@@ -58,26 +55,65 @@
         <div class="grid simple">
           <div class="grid-title no-border"><h4>Post <span class="semi-bold">Status</span></h4></div>
           <div class="grid-body no-border">
+
+            <div class="row">
+              <div class="col-md-12">
+                <h5>Post <span class="semi-bold">On</span></h5>
+                <div class="input-append success date no-padding">
+                    <input type="text" class="form-control" id="sandbox-advance" value="<%= DateTime.now.strftime('%m/%d/%Y') %>">
+                    <span class="add-on"><span class="arrow"></span><i class="fa fa-th"></i></span>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                  <h5>Post <span class="semi-bold">Status</span></h5>
+                  <select id="source" style="width:100%">
+                    <option value="draft">Draft</option>
+                    <option value="published">Published</option>
+                    <option value="pending">Pending Review</option>
+                  </select>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="actions">
+                  <%= f.submit "Publish", :class => "btn btn-block btn-success btn-cons" %>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
         <div class="grid simple">
           <div class="grid-title no-border"><h4>Post <span class="semi-bold">Categories</span></h4></div>
           <div class="grid-body no-border">
-            <div class="select2-container select2-container-multi" id="s2id_multi" style="width:100%"><ul class="select2-choices">  <li class="select2-search-field">    <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" id="s2id_autogen2" style="width: 32px;">  </li></ul></div>
-            <select id="multi" style="width:100%" multiple="" tabindex="-1" class="select2-offscreen">
-                    <option value="Jim">Jim</option>
-                    <option value="John">John</option>
-                    <option value="Lucy">Lucy</option>
-                  </select>
+            <select id="multi" style="width:100%" multiple>
+              <option value="Jim">Jim</option>
+              <option value="John">John</option>
+              <option value="Lucy">Lucy</option>
+            </select>
           </div>
         </div>
+        <% end %>
         <div class="grid simple">
           <div class="grid-title no-border"><h4>Featured <span class="semi-bold">Image</span></h4></div>
           <div class="grid-body no-border">
+            <div class="row-fluid">
+
+            <%= form_for @attachment, url: admin_attachments_path, :html => { multipart: true, class: "dropzone"} do |f|  %>
+              <div class="fallback">
+                <%= f.file_field :file %><br>
+                <%= f.submit "Upload" %>
+              </div>
+            <% end %>
+
+            </div>
           </div>
         </div>
       </div>
-      <% end %>
+
     </div>
   </div>
 

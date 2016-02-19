@@ -7,6 +7,7 @@ class App.Views.Header extends Backbone.View
     'click #my-task-list': 'toggle_tasks'
     'click #layout-condensed-toggle': 'condens_menu'
     'click #user-options': 'hide_task_list'
+    'click #reload-page': 'reload_page'
 
   initialize: ->
     @render();
@@ -18,7 +19,8 @@ class App.Views.Header extends Backbone.View
     @$el.html @template
   hide_task_list: ->
     $('#my-task-list').popover('hide');
-  toggle_chat: ->
+  toggle_chat: (e)->
+    e.preventDefault();
     $("body").toggleChat();
   toggle_tasks: (ev) ->
      $(this).find('#my-task-list').popover({
@@ -28,3 +30,5 @@ class App.Views.Header extends Backbone.View
     });
   condens_menu: ->
     $("body").condensMenu();
+  reload_page: ->
+    location.reload();

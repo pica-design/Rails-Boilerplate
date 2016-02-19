@@ -24,6 +24,8 @@ class Admin::AttachmentsController < Admin::BaseController
   # POST /admin/attachments
   # POST /admin/attachments.json
   def create
+
+    @debug = admin_attachment_params
     @attachment = Attachment.new(admin_attachment_params)
 
     respond_to do |format|
@@ -69,6 +71,8 @@ class Admin::AttachmentsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_attachment_params
+      @params = params
+      params.require(:attachment).permit(:file)
       params.fetch(:admin_attachment, {})
     end
 end

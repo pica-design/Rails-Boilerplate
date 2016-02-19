@@ -93,8 +93,8 @@ background:url(../img/loader.gif) no-repeat center #fff;
 	width:59px;
 	height:61px;
 	outline:none;
-	background:url(../images/marker.html) no-repeat;
-	background:url(../img/mapMarker.png) no-repeat;
+	background:image_url("marker.html") no-repeat;
+	background:image_url("mapMarker.png") no-repeat;
 	cursor:pointer;
 }
 .popup .close {
@@ -106,7 +106,7 @@ background:url(../img/loader.gif) no-repeat center #fff;
 	width:16px;
 	height:16px;
 	outline:none;
-	background:url(../img/close.gif) no-repeat;
+	background:image_url("close.gif") no-repeat;
 	cursor:pointer;
 }
 
@@ -131,7 +131,7 @@ background:url(../img/loader.gif) no-repeat center #fff;
 .controls .active {
 	background:#118b81 !important;
 	color:#fff;
-}	
+}
 
 .popup {
 	padding-bottom: 15px;
@@ -266,33 +266,33 @@ pre .typ { color: #98fb98 } /* type    - lightgreen */
 pre .pun { color: #fff }    /* punctuation */
 pre .pln { color: #fff }    /* plaintext */
 pre .dec { color: #98fb98 } /* decimal         - lightgreen */
-	
-/*	 	
+
+/*
  pre .atn { color: #bdb76b; font-weight: bold }
- */ 
+ */
 pre .atn { color: #8AC763; font-weight: bold }
-pre .tag { color: #8AC763; font-weight: bold } 
-pre .atv { color: #ffa0a0 }	
+pre .tag { color: #8AC763; font-weight: bold }
+pre .atv { color: #ffa0a0 }
 
 /* Specify class=linenums on a pre to get line numbering */
 ol.linenums { margin-top: 0; margin-bottom: 0; color: #AEAEAE } /* IE indents via margin-left */
 li.L0,li.L1,li.L2,li.L3,li.L5,li.L6,li.L7,li.L8 { list-style-type: none }
 /* Alternate shading for lines */
 li.L1,li.L3,li.L5,li.L7,li.L9 { }
-	
 
-pre .com { 
-	color: #A4D886; /* зеленый */ 
-	color: #F0E68C; /* желтый */ 
-	color: #87CEEB; /* синий */ 
+
+pre .com {
+	color: #A4D886; /* зеленый */
+	color: #F0E68C; /* желтый */
+	color: #87CEEB; /* синий */
 	font-style:normal;
 	font-family:arial;
-} 
+}
 
 
 pre.prettyprint.lang-html {
 	max-width:970px;
-	/* 
+	/*
 	*/
 	overflow:hidden;
 }
@@ -315,8 +315,8 @@ body.black {
 	box-shadow:inset 0 0 10px #bbb !important;
 }
 pre {
-	display: inline-block; 
-	background-color: #222; 
+	display: inline-block;
+	background-color: #222;
 	margin-top:14px;
 	margin-bottom:14px;
 	padding-top:12px;
@@ -418,7 +418,7 @@ p {
 
 .dlangBox a {
 	font-weight:normal;
-	
+
 }
 
 .dlangBox span {
@@ -467,7 +467,7 @@ p {
 	color:black;
 	-webkit-box-shadow: rgba(0,0,0,0.3) 0 0 21px;
 	-moz-box-shadow: rgba(0,0,0,0.3) 0 0 21px;
-	box-shadow: rgba(0,0,0,0.3) 0 0 21px;	
+	box-shadow: rgba(0,0,0,0.3) 0 0 21px;
 }
 
 .jqBoxTitle {
@@ -506,7 +506,7 @@ p {
 .buttonsLine form,
 .jqueryCurrent {
 	margin-bottom:4px;
-	
+
 }
 
 
@@ -517,7 +517,7 @@ body {
 	height:100%;
 }
 
-.wrapper, 
+.wrapper,
 .demowrap {
 	min-height: 100% !important;
 	padding-left:30px;
@@ -542,7 +542,7 @@ body.nopadding div.demowrap {
 	margin-top:30px;
 	display:inline-block;
 	border:1px dashed green;
-	padding: 7px 12px;	
+	padding: 7px 12px;
 	margin-bottom:20px;
 }
 
@@ -562,7 +562,7 @@ body.nopadding div.demowrap {
 	z-index:1000;
 	background:#eee;
 	margin:0 !important;
-	
+
 	opacity: 0.8;
 	filter:alpha(opacity=80);
 }

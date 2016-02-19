@@ -8,10 +8,4 @@ class Post < ActiveRecord::Base
   attr_accessor :user_id
   attr_accessor :menu_order
 
-  #validations
-  validates :user_id, presence: true
-  validates :status, presence: true
-  validates :guid, presence: true, format: { :with => URI.regexp(%w(http https)), :message => "Valid GUID required" }
-  validates :menu_order, presence: true, uniqueness: true
-
 end

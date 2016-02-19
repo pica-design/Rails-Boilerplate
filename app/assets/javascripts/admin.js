@@ -10,7 +10,6 @@
 //= require plugins/jquery-scrollbar/jquery.scrollbar.min
 //= require plugins/jquery-numberAnimate/jquery.animateNumbers
 //= require plugins/jquery-validation/js/jquery.validate.min
-//= require plugins/bootstrap-select2/select2.min
 //= require plugins/jquery-datatable/js/jquery.dataTables.min
 //= require plugins/jquery-datatable/extra/js/dataTables.tableTools.min
 //= require plugins/datatables-responsive/js/datatables.responsive

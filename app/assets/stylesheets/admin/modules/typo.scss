@@ -9,7 +9,7 @@
 .notification-alert {
     width: 29px;
     height: 29px;
-    background-image: url("../img/notification-alert.png");
+    background-image: image_path("notification-alert.png");
     position: absolute;
     float: right;
     right: -15px;
@@ -289,9 +289,9 @@ hr {
 .fa-7x {
     font-size: 7em;
 }
-[class^="icon-"], 
+[class^="icon-"],
 [class*=" icon-"],
-[class^="icon-"]:hover, 
+[class^="icon-"]:hover,
 [class*=" icon-"]:hover {
     background: none !important;
 }
@@ -333,8 +333,8 @@ hr {
         font-family: $base-font-family;
     }
 }
-.page-content .breadcrumb a, 
-.page-content .breadcrumb i, 
+.page-content .breadcrumb a,
+.page-content .breadcrumb i,
 .page-content .breadcrumb span, .page-content .breadcrumb li {
     color: #515050;
     font-weight: 300;

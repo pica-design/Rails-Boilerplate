@@ -15,6 +15,7 @@ class Admin::PostsController < Admin::BaseController
   # GET /admin/posts/new
   def new
     @post = Post.new
+    @attachment = Attachment.new
   end
 
   # GET /admin/posts/1/edit
@@ -26,9 +27,9 @@ class Admin::PostsController < Admin::BaseController
   # POST /admin/posts.json
   def create
     @post = Post.new(admin_post_params)
-
+    @attachment = Attachment.new(admin_post_params)
     respond_to do |format|
-      if @post.save
+      if (@post.save && @attachment.save)
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -70,6 +71,7 @@ class Admin::PostsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_post_params
+      params.require(:attachment).permit(:file)
       params.fetch(:admin_post, {})
     end
 end

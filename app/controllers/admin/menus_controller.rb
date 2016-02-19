@@ -4,7 +4,7 @@ class Admin::MenusController < Admin::BaseController
   # GET /admin/menus
   # GET /admin/menus.json
   def index
-    @admin_menus = Admin::Menu.all
+    @menus = Menu.all
   end
 
   # GET /admin/menus/1
@@ -14,7 +14,7 @@ class Admin::MenusController < Admin::BaseController
 
   # GET /admin/menus/new
   def new
-    @admin_menu = Admin::Menu.new
+    @menu = Menu.new
   end
 
   # GET /admin/menus/1/edit
@@ -24,15 +24,15 @@ class Admin::MenusController < Admin::BaseController
   # POST /admin/menus
   # POST /admin/menus.json
   def create
-    @admin_menu = Admin::Menu.new(admin_menu_params)
+    @menu = Menu.new(admin_menu_params)
 
     respond_to do |format|
-      if @admin_menu.save
-        format.html { redirect_to @admin_menu, notice: 'Menu was successfully created.' }
-        format.json { render :show, status: :created, location: @admin_menu }
+      if @menu.save
+        format.html { redirect_to admin_menus_url, notice: 'Menu was successfully created.' }
+        format.json { render :show, status: :created, location: @menu }
       else
         format.html { render :new }
-        format.json { render json: @admin_menu.errors, status: :unprocessable_entity }
+        format.json { render json: @menu.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,12 +41,12 @@ class Admin::MenusController < Admin::BaseController
   # PATCH/PUT /admin/menus/1.json
   def update
     respond_to do |format|
-      if @admin_menu.update(admin_menu_params)
-        format.html { redirect_to @admin_menu, notice: 'Menu was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin_menu }
+      if @menu.update(admin_menu_params)
+        format.html { redirect_to @menu, notice: 'Menu was successfully updated.' }
+        format.json { render :show, status: :ok, location: @menu }
       else
         format.html { render :edit }
-        format.json { render json: @admin_menu.errors, status: :unprocessable_entity }
+        format.json { render json: @menu.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +54,7 @@ class Admin::MenusController < Admin::BaseController
   # DELETE /admin/menus/1
   # DELETE /admin/menus/1.json
   def destroy
-    @admin_menu.destroy
+    @menu.destroy
     respond_to do |format|
       format.html { redirect_to admin_menus_url, notice: 'Menu was successfully destroyed.' }
       format.json { head :no_content }
@@ -64,7 +64,7 @@ class Admin::MenusController < Admin::BaseController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_menu
-      @admin_menu = Admin::Menu.find(params[:id])
+      @menu = Menu.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

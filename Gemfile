@@ -6,7 +6,7 @@ gem 'rails'
 # Use mysql as the database for Active Record
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem "bootstrap"
+gem "bootstrap-sass"
 gem 'sass-rails'
 gem 'compass-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -23,6 +23,7 @@ gem 'rails-backbone'
 gem 'ejs'
 # For authentication
 gem 'devise'
+gem 'bootstrap-wysihtml5-rails'
 
 # because we need to add socket io for the communication part.
 gem 'socket.io-rails'

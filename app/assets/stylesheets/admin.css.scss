@@ -1,23 +1,20 @@
 /*
 *= require plugins/pace/pace-theme-flash
-*= require bootstrapv3/css/bootstrap.min
-*= require bootstrapv3/css/bootstrap-theme.min
 *= require font-awesome/css/font-awesome
 *= require animate.min
 *= require jquery-scrollbar/jquery.scrollbar
-*= require webarch/css/webarch.css
-//= require plugins/bootstrap-select2/select2.css
-//= require plugins/jquery-datatable/css/jquery.dataTables.css
-//= require plugins/datatables-responsive/css/datatables.responsive.css
+*= require plugins/bootstrap-select2/select2.css
+*= require plugins/jquery-datatable/css/jquery.dataTables.css
+*= require plugins/datatables-responsive/css/datatables.responsive.css
+*= require webarch/css/webarch
 */
 
 //Core Compass
-@import "compass";
-@import "compass/css3";
-
-//Import the core files for layouts.
-@import "compass/layout";
-@import "compass/css3/user-interface";
-
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "bootstrap-wysihtml5/bootstrap3-wysihtml5";
+.wysihtml5-sandbox{
+  width: 100% !important;
+}
 @import "admin/style.scss";
 

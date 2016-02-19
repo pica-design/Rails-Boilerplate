@@ -1,0 +1,85 @@
+
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="col-md-12">
+        <div class="page-title">
+          <%= link_to '<i class="icon-custom-left"></i>'.html_safe, admin_posts_path %>
+          <h3>New <span class="semi-bold">Post</span></h3>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <% if @post.errors.any? %>
+            <div id="error_explanation">
+              <% @post.errors.full_messages.each do |message| %>
+                <div class="alert">
+                  <button class="close" data-dismiss="alert"></button>
+                  <%= message %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+      </div>
+      <div class="col-md-9 col-sm-9 col-xs-9">
+        <div class="grid simple">
+          <div class="grid-title no-border">
+            <h4>Post <span class="semi-bold">Title</span></h4>
+          </div>
+          <div class="grid-body no-border">
+            <div class="form-group">
+              <div class="controls">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="grid simple">
+                <div class="grid-title no-border">
+                  <h4>Post <span class="semi-bold">Content</span></h4>
+                  <div class="tools"> <a href="javascript:;" class="collapse"></a> <a href="#grid-config" data-toggle="modal" class="config"></a> <a href="javascript:;" class="reload"></a> <a href="javascript:;" class="remove"></a> </div>
+                </div>
+                <div class="grid-body no-border">
+                  <div class="row-fluid">
+                    <%= form_for [:admin, @post] do |f| %>
+            <textarea id="text-editor" placeholder="Enter text ..." class="form-control" rows="10"></textarea>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid simple">
+          <div class="grid-title no-border"><h4>Post <span class="semi-bold">Excerpt</span></h4></div>
+          <div class="grid-body no-border">
+            <textarea id="text-editor" placeholder="Enter text ..." class="form-control" rows="10"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-3 col-xs-3">
+        <div class="grid simple">
+          <div class="grid-title no-border"><h4>Post <span class="semi-bold">Status</span></h4></div>
+          <div class="grid-body no-border">
+          </div>
+        </div>
+        <div class="grid simple">
+          <div class="grid-title no-border"><h4>Post <span class="semi-bold">Categories</span></h4></div>
+          <div class="grid-body no-border">
+            <div class="select2-container select2-container-multi" id="s2id_multi" style="width:100%"><ul class="select2-choices">  <li class="select2-search-field">    <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input" id="s2id_autogen2" style="width: 32px;">  </li></ul></div>
+            <select id="multi" style="width:100%" multiple="" tabindex="-1" class="select2-offscreen">
+                    <option value="Jim">Jim</option>
+                    <option value="John">John</option>
+                    <option value="Lucy">Lucy</option>
+                  </select>
+          </div>
+        </div>
+        <div class="grid simple">
+          <div class="grid-title no-border"><h4>Featured <span class="semi-bold">Image</span></h4></div>
+          <div class="grid-body no-border">
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+
+

@@ -32,7 +32,7 @@ class Admin::PostsController < Admin::BaseController
   # POST /admin/posts.json
   def create
     @post = Post.new
-    @post.attributes = {
+    Array @post.attributes = {
       title: params[:title],
       excerpt: params[:excerpt],
       content: params[:content],
@@ -40,7 +40,7 @@ class Admin::PostsController < Admin::BaseController
       menu_order: params[:menu_order],
       attachment_id: params[:attachment_id],
       parent: params[:parent],
-      post_on: params[:post_on]
+      post_on: Date.strptime(params[:post_on],"%m/%d/%Y").to_s
     }
     @post.generate_permalink!
     respond_to do |format|
@@ -62,7 +62,7 @@ class Admin::PostsController < Admin::BaseController
   # PATCH/PUT /admin/posts/1.json
   def update
     # byebug
-    @post.update_columns({
+    Array @post.attributes = {
       title: params[:title],
       excerpt: params[:excerpt],
       content: params[:content],
@@ -71,15 +71,15 @@ class Admin::PostsController < Admin::BaseController
       attachment_id: params[:attachment_id],
       parent: params[:parent],
       post_on: Date.strptime(params[:post_on],"%m/%d/%Y").to_s
-    })
+    }
     respond_to do |format|
-      if (true)
-        format.html { redirect_to admin_post_url(@post.id), notice: 'Post was successfully updated.' }
+      if (@post.save)
         format.json { render json: {
           :post => @post,
           # only send one because we can do a quick search replace to change the path
           # go to post_new_js BackBone
         }, status: :updated}
+        format.html { redirect_to admin_post_url(@post.id), notice: 'Post was successfully updated.' }
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }

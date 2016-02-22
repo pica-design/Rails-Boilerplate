@@ -1,7 +1,8 @@
 <div class="col-md-12">
   <h5>Post <span class="semi-bold">On</span></h5>
   <div class="input-append success date no-padding">
-      <input type="text" class="form-control" id="sandbox-advance" value="<%= DateTime.now.strftime('%m/%d/%Y') %>">
+
+      <input type="text" class="form-control" id="sandbox-advance" value="<%= @post.post_on != nil ? @post.post_on.to_time.strftime('%m/%d/%Y') : DateTime.now.strftime('%m/%d/%Y') %>">
       <span class="add-on"><span class="arrow"></span><i class="fa fa-th"></i></span>
   </div>
 </div>

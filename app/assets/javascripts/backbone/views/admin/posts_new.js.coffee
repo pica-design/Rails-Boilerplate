@@ -1,8 +1,9 @@
-class App.Views.PostNew extends Backbone.View
+class App.Views.Post extends Backbone.View
   template: -> $('.page-content').html();
   el: '.page-content'
   events:
     'click .publish': 'new_post'
+    'click .update': 'update_post'
 
   initialize: ->
     # initialize dropzone to the upload element
@@ -76,3 +77,27 @@ class App.Views.PostNew extends Backbone.View
       location.href = "/admin/posts/" + response.post.permalink
       return),
       'json'
+  update_post: ->
+    update_post = {
+      id: $('#post_id').val(),
+      title: $('#title').val(),
+      content: @content.val(),
+      excerpt: @excerpt.val(),
+      post_on: $('.date input').val(),
+      status: $('#status').val(),
+      categories: $("#multi").select2('val');
+      attachment_id: $('input[name="attachment_id"]').val(),
+      user_id: 1
+      parent: 1
+      menu_order: 10
+    }
+    $.ajax
+      url: '/admin/posts/' + update_post.id,
+      data: update_post
+      dataType: 'json'
+      converters: {
+        "text json": jQuery.parseJSON
+      }
+      method: 'PUT'
+      complete: (response) ->
+        location.href = "/admin/posts/" + response.responseJSON.post.permalink + "/edit"

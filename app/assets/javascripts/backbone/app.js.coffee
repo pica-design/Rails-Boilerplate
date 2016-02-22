@@ -4,7 +4,7 @@
 #= require_tree ./views
 #= require_tree ./routers
 
-window.App =
+@App =
   Models: {}
   Collections: {}
   Routers: {}
@@ -18,7 +18,7 @@ window.App =
      if document.location.pathname.indexOf("/admin") == 0
         new App.Routers.AdminRouter()
      else
-      new App.Routers.ApplicationRouter()
+        new App.Routers.ApplicationRouter()
 
      Backbone.history.start pushState: true
 

@@ -17,4 +17,5 @@ class App.Routers.AdminRouter extends Backbone.Router
         todayHighlight: true
       return
      posts_new: ->
-       window.aboutView = new App.Views.Post()
+       window.postView = new App.Views.Post()
+       window.postView.render()

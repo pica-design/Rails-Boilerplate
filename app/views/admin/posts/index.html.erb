@@ -24,13 +24,7 @@
   </thead>
 
   <tbody>
-    <% @posts.each do |admin_post| %>
-      <tr>
-        <td><%= link_to 'Show', admin_post %></td>
-        <td><%= link_to 'Edit', edit_admin_post_path(admin_post) %></td>
-        <td><%= link_to 'Destroy', admin_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+
   </tbody>
 </table>
   <p id="notice"><%= notice %></p>
@@ -101,18 +95,19 @@
                 </thead>
 
                 <tbody role="alert" aria-live="polite" aria-relevant="all">
-                  <tr class="gradeX odd">
-                    <td class="center "> <i class="fa fa-edit"></i>
-                    </td>
-                    <td class=" ">Trident</td>
-                    <td class=" ">
-                      Internet
-                        Explorer 4.0
-                    </td>
-                    <td class=" ">Win 95+</td>
-                    <td class="center ">4</td>
-                    <td class="center ">X</td>
-                  </tr>
+                  <% @posts.each do |post| %>
+                    <tr class="gradeX odd">
+                      <td class="center "> <%= link_to '<i class="fa fa-edit"></i>'.html_safe, edit_admin_post_path(post.id) %>
+                      </td>
+                      <td class=" "><%= link_to post.title, admin_post_path(post.id) %></td>
+                      <td class=" ">
+                        1
+                      </td>
+                      <td class=" "><%= time_ago_in_words post.updated_at %> ago</td>
+                      <td class="center "><%= time_ago_in_words post.created_at %> ago</td>
+                      <td class="center "><%= post.status.capitalize %></td>
+                    </tr>
+                  <% end %>
                 </tbody>
               </table>
               <div class="row">

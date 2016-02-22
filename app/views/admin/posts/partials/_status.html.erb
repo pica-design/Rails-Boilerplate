@@ -1,0 +1,8 @@
+<div class="col-md-12">
+  <h5>Post <span class="semi-bold">Status</span></h5>
+  <select id="status" style="width:100%">
+    <option value="draft" <%= 'selected="selected"' if @post.status != nil && @post.status == 'draft' %>>Draft</option>
+    <option value="published" <%= 'selected="selected"' if @post.status != nil && @post.status == 'published' %>>Published</option>
+    <option value="pending" <%= 'selected="selected"' if @post.status != nil && @post.status == 'pending' %>>Pending Review</option>
+  </select>
+</div>

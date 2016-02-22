@@ -2,6 +2,8 @@
 // All this logic will automatically be available in application.js.
 // You can use CoffeeScript in this file: http://coffeescript.org/
 //= require jquery
+//= require jquery_ujs
+//= require jquery.remotipart
 //= require tether
 //= require bootstrap-sprockets
 //= require plugins/pace/pace.min
@@ -24,6 +26,8 @@
 //= require plugins/bootstrap-tag/bootstrap-tagsinput.min
 //= require plugins/boostrap-clockpicker/bootstrap-clockpicker.min
 //= require plugins/dropzone/dropzone.min
+//= require mustache
+//= require jquery.mustache
 //= require bootstrap-wysihtml5
 
 (function($) {

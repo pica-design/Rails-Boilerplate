@@ -11,26 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219204359) do
+ActiveRecord::Schema.define(version: 20160222025256) do
 
   create_table "attachments", force: :cascade do |t|
     t.text     "meta",              limit: 65535
-    t.integer  "user_id",           limit: 4,     default: 1, null: false
+    t.integer  "user_id",           limit: 4,     null: false
+    t.integer  "post_id",           limit: 4
+    t.integer  "page_id",           limit: 4
+    t.string   "file_file_name",    limit: 255
+    t.string   "file_content_type", limit: 255
+    t.integer  "file_file_size",    limit: 4
+    t.datetime "file_updated_at"
     t.text     "content",           limit: 65535
     t.text     "filter_content",    limit: 65535
     t.string   "password",          limit: 255
     t.text     "title",             limit: 65535
     t.text     "excerpt",           limit: 65535
-    t.string   "status",            limit: 255,               null: false
-    t.integer  "parent",            limit: 4,                 null: false
+    t.string   "status",            limit: 255,   null: false
+    t.integer  "parent",            limit: 4,     null: false
     t.string   "guid",              limit: 255
-    t.integer  "menu_order",        limit: 4,                 null: false
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.string   "file_file_name",    limit: 255
-    t.string   "file_content_type", limit: 255
-    t.integer  "file_file_size",    limit: 4
-    t.datetime "file_updated_at"
+    t.integer  "menu_order",        limit: 4,     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -58,30 +60,34 @@ ActiveRecord::Schema.define(version: 20160219204359) do
     t.text     "excerpt",        limit: 65535
     t.string   "status",         limit: 255,               null: false
     t.integer  "parent",         limit: 4,                 null: false
-    t.string   "guid",           limit: 255
     t.integer  "menu_order",     limit: 4,                 null: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.string   "permalink",      limit: 255
+    t.datetime "post_on"
   end
 
-  add_index "pages", ["guid"], name: "index_pages_on_guid", unique: true, using: :btree
   add_index "pages", ["menu_order"], name: "index_pages_on_menu_order", unique: true, using: :btree
+  add_index "pages", ["permalink"], name: "index_pages_on_permalink", using: :btree
+  add_index "pages", ["post_on"], name: "index_pages_on_post_on", using: :btree
 
   create_table "posts", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4,     null: false
-    t.text     "content",    limit: 65535
-    t.text     "title",      limit: 65535
-    t.text     "excerpt",    limit: 65535
-    t.string   "status",     limit: 255,   null: false
-    t.integer  "parent",     limit: 4,     null: false
-    t.string   "guid",       limit: 255
-    t.integer  "menu_order", limit: 4,     null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "user_id",       limit: 4,     default: 1,       null: false
+    t.integer  "attachment_id", limit: 4
+    t.text     "content",       limit: 65535
+    t.text     "title",         limit: 65535
+    t.text     "excerpt",       limit: 65535
+    t.string   "status",        limit: 255,   default: "draft", null: false
+    t.integer  "parent",        limit: 4,     default: 0,       null: false
+    t.integer  "menu_order",    limit: 4,     default: 1,       null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
+    t.string   "permalink",     limit: 255
+    t.datetime "post_on"
   end
 
-  add_index "posts", ["guid"], name: "index_posts_on_guid", unique: true, using: :btree
-  add_index "posts", ["menu_order"], name: "index_posts_on_menu_order", unique: true, using: :btree
+  add_index "posts", ["permalink"], name: "index_posts_on_permalink", using: :btree
+  add_index "posts", ["post_on"], name: "index_posts_on_post_on", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name",         limit: 255,   null: false

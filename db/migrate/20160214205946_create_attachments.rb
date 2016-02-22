@@ -3,7 +3,10 @@ class CreateAttachments < ActiveRecord::Migration
     create_table :attachments do |t|
 
       t.text :meta
-      t.integer :user_id, null: false, default: 1
+      t.integer :user_id, null: false, default: nil
+      t.integer :post_id
+      t.integer :page_id
+      t.attachment :file
       t.text :content
       t.text :filter_content
       t.string :password

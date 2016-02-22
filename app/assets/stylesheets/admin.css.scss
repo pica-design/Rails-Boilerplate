@@ -1,6 +1,5 @@
 /*
 *= require plugins/pace/pace-theme-flash
-*= require plugins/dropzone/css/dropzone
 *= require font-awesome
 *= require animate.min
 *= require jquery-scrollbar/jquery.scrollbar
@@ -9,6 +8,8 @@
 *= require plugins/datatables-responsive/css/datatables.responsive.css
 *= require webarch/css/webarch
 */
+
+@import "admin/dropzone";
 
 //Core Compass
 @import "bootstrap-sprockets";

@@ -1,0 +1,25 @@
+<div class="grid simple">
+  <div class="grid-title no-border">
+    <h4>Featured <span class="semi-bold">Image</span></h4>
+  </div>
+  <div class="grid-body no-border">
+    <div class="row-fluid">
+      <div class="featured-image">
+        <%#
+          by far one of the more harder spots
+          we need to have the authenticity_token for image uploading
+          becuase we nested out models we have to set the path
+
+          we go to attachment_controller#create
+        %>
+        <%= form_for @attachment, url: admin_attachments_path, html: {class: "upload"}, :authenticity_token => true do |f|  %>
+          <div class="fallback">
+            <%= f.file_field :file %><br>
+            <%= f.submit "Upload", :disable_with=>"Loading..." %>
+          </div>
+        <% end %>
+        <input type="hidden" name="attachment_id">
+        </div>
+    </div>
+  </div>
+</div>

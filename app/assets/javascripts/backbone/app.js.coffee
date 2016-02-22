@@ -26,3 +26,9 @@ window.App =
 $ ->
   if window.location.hash.indexOf('!') > -1
     return App.redirectHashBang()
+
+_.extend(App, Backbone.Events);
+
+
+window.slugify = (text) ->
+  text.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').replace(/\-\-+/g, '-').replace(/^-+/, '').replace /-+$/, ''

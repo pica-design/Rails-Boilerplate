@@ -24,8 +24,11 @@ module App
     config.active_record.raise_in_transactional_callbacks = true
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
-    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts',)
     config.assets.paths << Rails.root.join('app', 'assets', 'img')
     config.assets.paths << Rails.root.join('app', 'assets', 'plugins')
+    config.assets.paths << Rails.root.join('app', 'assets', 'javascripts')
+    config.assets.paths << Rails.root.join('app', 'assets', 'javascripts', 'backbone')
+    config.assets.paths << Rails.root.join('app', 'assets', 'javascripts', 'backbone', 'templates')
   end
 end

@@ -1,0 +1,10 @@
+<div class="grid simple">
+  <div class="grid-title no-border">
+    <h4>Post <span class="semi-bold">Excerpt</span></h4>
+  </div>
+  <div class="grid-body no-border">
+    <textarea id="excerpt" class="excerpt" placeholder="Enter text ..." class="form-control" rows="10">
+      <%= @post.excerpt if @post.excerpt != nil %>
+    </textarea>
+  </div>
+</div>

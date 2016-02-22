@@ -10,6 +10,7 @@ class Admin::PostsController < Admin::BaseController
   # GET /admin/posts/1
   # GET /admin/posts/1.json
   def show
+
   end
 
   # GET /admin/posts/new
@@ -20,18 +21,36 @@ class Admin::PostsController < Admin::BaseController
 
   # GET /admin/posts/1/edit
   def edit
-
+    if @post.attachment_id != nil
+      @attachment = Attachment.find(@post.attachment_id)
+    else
+      @attachment = Attachment.new
+    end
   end
 
   # POST /admin/posts
   # POST /admin/posts.json
   def create
-    @post = Post.new(admin_post_params)
-    @attachment = Attachment.new(admin_post_params)
+    @post = Post.new
+    @post.attributes = {
+      title: params[:title],
+      excerpt: params[:excerpt],
+      content: params[:content],
+      status: params[:status],
+      menu_order: params[:menu_order],
+      attachment_id: params[:attachment_id],
+      parent: params[:parent],
+      post_on: params[:post_on]
+    }
+    @post.generate_permalink!
     respond_to do |format|
-      if (@post.save && @attachment.save)
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
+      if (@post.save)
+        format.html { redirect_to admin_post_url(@post), notice: 'Post was successfully created.' }
+        format.json { render json: {
+          :post => @post,
+          # only send one because we can do a quick search replace to change the path
+          # go to post_new_js BackBone
+        }, status: :created}
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -42,12 +61,27 @@ class Admin::PostsController < Admin::BaseController
   # PATCH/PUT /admin/posts/1
   # PATCH/PUT /admin/posts/1.json
   def update
+    # byebug
+    @post.update_columns({
+      title: params[:title],
+      excerpt: params[:excerpt],
+      content: params[:content],
+      status: params[:status],
+      menu_order: params[:menu_order],
+      attachment_id: params[:attachment_id],
+      parent: params[:parent],
+      post_on: Date.strptime(params[:post_on],"%m/%d/%Y").to_s
+    })
     respond_to do |format|
-      if @post.update(admin_post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
+      if (true)
+        format.html { redirect_to admin_post_url(@post.id), notice: 'Post was successfully updated.' }
+        format.json { render json: {
+          :post => @post,
+          # only send one because we can do a quick search replace to change the path
+          # go to post_new_js BackBone
+        }, status: :updated}
       else
-        format.html { render :edit }
+        format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
@@ -66,12 +100,15 @@ class Admin::PostsController < Admin::BaseController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_post
-      @post = Post.find(params[:id])
+      if(params[:id].to_i > 0)
+        @post = Post.find(params[:id])
+      else
+        @post = Post.find_by_permalink(params[:id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_post_params
-      params.require(:attachment).permit(:file)
       params.fetch(:admin_post, {})
     end
 end

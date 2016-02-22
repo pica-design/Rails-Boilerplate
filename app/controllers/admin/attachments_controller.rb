@@ -24,14 +24,36 @@ class Admin::AttachmentsController < Admin::BaseController
   # POST /admin/attachments
   # POST /admin/attachments.json
   def create
-
-    @debug = admin_attachment_params
+    # createa new attachment
     @attachment = Attachment.new(admin_attachment_params)
+    # we attach the file HERE
+    @attachment.file = params[:attachment][:file]
+    # set some of the parameters
+    @attachment.file_file_name = "New"
+    # some of the information below will not be required in production @TODO
+    # who uploaded this
+    @attachment.user_id = 1
+    # set the status
+    @attachment.status = "draft"
+    # parent
+    @attachment.parent = 1
+    # menu order
+    @attachment.menu_order = 1
 
     respond_to do |format|
       if @attachment.save
-        format.html { redirect_to @attachment, notice: 'Attachment was successfully created.' }
-        format.json { render :show, status: :created, location: @attachment }
+        format.js
+        format.html { redirect_to admin_attachment_url(@attachment), notice: 'Attachment was successfully created.' }
+        # here is the magic to get the response
+        # lets respond to the post request with
+        # • JSON: @attachment, file, file, URL
+        format.json { render json: {
+          :attachment_info => @attachment,
+          :file => @attachment.file,
+          # only send one because we can do a quick search replace to change the path
+          # go to post_new_js BackBone
+          :url => @attachment.file.url(:thumb)
+        }, status: :created, location: admin_attachment_url(@attachment) }
       else
         format.html { render :new }
         format.json { render json: @attachment.errors, status: :unprocessable_entity }
@@ -71,8 +93,7 @@ class Admin::AttachmentsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_attachment_params
-      @params = params
-      params.require(:attachment).permit(:file)
+      params.require(:attachment).permit(:file) if params[:attachment]
       params.fetch(:admin_attachment, {})
     end
 end

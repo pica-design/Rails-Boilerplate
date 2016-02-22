@@ -41,7 +41,12 @@ GEM
     autoprefixer-rails (6.3.3)
       execjs
       json
+    awesome_print (1.6.1)
     bcrypt (3.1.10)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.6)
@@ -51,11 +56,13 @@ GEM
       railties (>= 3.0)
     builder (3.2.2)
     byebug (8.2.2)
+    callsite (0.0.11)
     chunky_png (1.3.5)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
       climate_control (>= 0.0.3, < 1.0)
+    coderay (1.1.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -94,8 +101,10 @@ GEM
     ffi (1.9.10)
     font-awesome-rails (4.5.0.1)
       railties (>= 3.2, < 5.1)
+    git-version-bump (0.15.1)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    has_permalink (0.1.7)
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
@@ -109,11 +118,18 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    meta_request (0.4.0)
+      callsite (~> 0.0, >= 0.0.11)
+      rack-contrib (~> 1.1)
+      railties (>= 3.0.0, < 5.1.0)
     mime-types (2.99)
     mimemagic (0.3.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
+    mustache (1.0.2)
+    mustache-js-rails (2.0.3)
+      railties (>= 3.1, <= 5.0)
     mysql2 (0.4.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
@@ -125,6 +141,9 @@ GEM
       mime-types
       mimemagic (= 0.3.0)
     rack (1.6.4)
+    rack-contrib (1.4.0)
+      git-version-bump (~> 0.15)
+      rack (~> 1.4)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.5.1)
@@ -163,6 +182,7 @@ GEM
       ffi (>= 0.5.0)
     rdoc (4.2.2)
       json (~> 1.4)
+    remotipart (1.2.1)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
     sass (3.4.21)
@@ -209,7 +229,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bcrypt (~> 3.1.7)
+  better_errors
+  binding_of_caller
   bootstrap-sass
   bootstrap-wysihtml5-rails
   byebug
@@ -218,20 +241,25 @@ DEPENDENCIES
   devise
   ejs
   font-awesome-rails
+  has_permalink
   jbuilder (~> 2.0)
   jquery-rails
+  meta_request
+  mustache
+  mustache-js-rails
   mysql2
   paperclip
   rails
   rails-assets-tether (>= 1.1.0)!
   rails-backbone
+  remotipart
   sass-rails
   sdoc (~> 0.4.0)
   select2-rails
   socket.io-rails
   spring
   turbolinks
-  uglifier (>= 1.3.0)
+  uglifier
   web-console (~> 2.0)
 
 BUNDLED WITH

@@ -1,14 +1,17 @@
 class App.Routers.AdminRouter extends Backbone.Router
     routes:
       '': 'index',
-      'admin/posts/new': 'posts_new',
-      'admin/posts/:id/edit': 'posts_new',
+      'admin/posts': 'view_posts'
+      'admin/posts/': 'view_posts'
+      'admin/posts/new': 'post',
+      'admin/posts/:id/edit': 'post',
       'contact': 'contact'
     initialize: ->
-      window.headerView = new App.Views.Header()
-      window.footerView = new App.Views.Footer()
-      window.adminSideView = new App.Views.AdminSide()
-      window.adminChatView = new App.Views.AdminChat()
+      console.log "router"
+      App.headerView = new App.Views.Header()
+      App.footerView = new App.Views.Footer()
+      App.adminSideView = new App.Views.AdminSide()
+      App.adminChatView = new App.Views.AdminChat()
       $('#multi').select2({
           theme: "bootstrap"
       });
@@ -16,6 +19,10 @@ class App.Routers.AdminRouter extends Backbone.Router
         autoclose: true
         todayHighlight: true
       return
-     posts_new: ->
-       window.postView = new App.Views.Post()
+     view_posts: ->
+      App.posts = new App.Collections.PostsCollection
+      App.posts.fetch({reset: true})
+      App.postsListView = new App.Views.PostsView(collection: App.posts)
+     post: ->
+       window.postView = new App.Views.PostView()
        window.postView.render()

@@ -6,6 +6,7 @@ class App.Views.AdminSide extends Backbone.View
     'click .page-sidebar li a': 'toggle_submenu'
 
   initialize: ->
+    console.log "adminside"
     @render();
 
   render: ->

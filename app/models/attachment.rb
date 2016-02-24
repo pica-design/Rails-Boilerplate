@@ -3,10 +3,6 @@ class Attachment < ActiveRecord::Base
   has_one :post
   has_one :page
 
-  attr_accessor :file
-  attr_accessor :file_file_name
-  attr_accessor :file_content_type
-
   has_attached_file :file,
     :path => ":rails_root/public/system/:class/:attachment/:id/:basename_:style.:extension",
     :url => "/system/:class/:attachment/:id/:basename_:style.:extension",

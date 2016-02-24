@@ -6,7 +6,7 @@
     <div class="form-group">
       <div class="controls">
         <input type="text" class="form-control" id="title" value="<% if(title){%><%=title%><%} %>">
-
+        <input type="hidden" id="post_id" value="<%= id > 0 ? id : "" %>">
       </div>
     </div>
   </div>

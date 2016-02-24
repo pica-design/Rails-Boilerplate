@@ -1,1 +1,4 @@
-json.extract! @attachment, :id, :created_at, :updated_at
+json.details do
+    json.attachment_info @attachment.attributes
+    json.url @attachment.file.url(:thumb)
+end

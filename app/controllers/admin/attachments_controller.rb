@@ -24,22 +24,19 @@ class Admin::AttachmentsController < Admin::BaseController
   # POST /admin/attachments
   # POST /admin/attachments.json
   def create
-    # createa new attachment
+    # create a new attachment
     @attachment = Attachment.new(admin_attachment_params)
-    # we attach the file HERE
     @attachment.file = params[:attachment][:file]
-    # set some of the parameters
-    @attachment.file_file_name = "New"
-    # some of the information below will not be required in production @TODO
-    # who uploaded this
-    @attachment.user_id = 1
-    # set the status
-    @attachment.status = "draft"
-    # parent
-    @attachment.parent = 1
-    # menu order
-    @attachment.menu_order = 1
-
+    Array @attachment.attributes = {
+      file_file_name: params[:attachment][:file].original_filename,
+      title: params[:attachment][:file].original_filename,
+      post_id: 1,
+      user_id: 1,
+      page_id: 1,
+      parent: 1,
+      status: 'draft',
+      menu_order: 1
+    }
     respond_to do |format|
       if @attachment.save
         format.js

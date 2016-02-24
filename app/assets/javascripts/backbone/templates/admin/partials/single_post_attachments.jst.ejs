@@ -4,6 +4,7 @@
   </div>
   <div class="grid-body no-border">
     <div class="row-fluid">
+      <input type="hidden" name="attachment_id" value="<%= attachment_id %>">
       <div class="featured-image">
         <%/*
           by far one of the more harder spots
@@ -13,15 +14,16 @@
           we go to attachment_controller#create
           */
         %>
+        <% if(attachment_id != null){%>
         <form class="upload" id="new_attachment" enctype="multipart/form-data" action="/admin/attachments" accept-charset="UTF-8" method="post">
-          <input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="JFsZ7ceC+tOWPIS3w3gIsFaYL4gcuLvDMydpb8+NF8QAVrnw5k1fHV3J3fYO8lc0X+W88GP8cXS/lo/YNbDG4A==">
-
+          <input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="<%= $('meta[name=csrf-token]').attr('content') %>">
           <div class="fallback">
             <input type="file" name="attachment[file]" id="attachment_file"><br>
             <input type="submit" name="commit" value="Upload" disable_with="Loading...">
           </div>
         </form>
-        <input type="hidden" name="attachment_id">
+        <% }else{ %>
+        <% } %>
         </div>
     </div>
   </div>

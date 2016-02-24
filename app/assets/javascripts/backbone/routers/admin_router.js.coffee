@@ -11,12 +11,6 @@ class App.Routers.AdminRouter extends Backbone.Router
     App.footerView = new App.Views.Footer()
     App.adminSideView = new App.Views.AdminSide()
     App.adminChatView = new App.Views.AdminChat()
-    $('#multi').select2({
-        theme: "bootstrap"
-    });
-    $('.input-append.date').datepicker
-      autoclose: true
-      todayHighlight: true
     return
   view_posts: ->
     App.posts = new App.Collections.PostsCollection

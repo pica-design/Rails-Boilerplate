@@ -12,7 +12,7 @@
     <!-- errors -->
     <div class="col-md-9 col-sm-9 col-xs-9">
       <%/*= render :partial => "admin/posts/partials/title" */%>
-      <%= JST['backbone/templates/admin/partials/single_post_title']({title: model.title}) %>
+      <%= JST['backbone/templates/admin/partials/single_post_title']({title: model.title, id: model.id}) %>
       <%/*= render :partial => "admin/posts/partials/content" */%>
       <%= JST['backbone/templates/admin/partials/single_post_content']({content: model.content}) %>
       <%/*= render :partial => "admin/posts/partials/excerpt" */%>
@@ -36,7 +36,7 @@
           <div class="row">
             <div class="col-md-12 col-lg-12 col-sm-12">
               <div class="actions">
-                <button class="btn btn-block btn-success btn-cons <% model.id > 0 ? 'update' : 'publish' %>">
+                <button class="btn btn-block btn-success btn-cons <%= model.id > 0 ? 'update' : 'publish' %>">
                   <% if (model.id > 0) {%>
                     Update
                   <% }else{ %>
@@ -50,7 +50,7 @@
       </div>
       <%/*= render :partial => "admin/posts/partials/categories" */%>
       <%= JST['backbone/templates/admin/partials/single_post_categories']() %>
-      <%= JST['backbone/templates/admin/partials/single_post_attachments']() %>
+      <%= JST['backbone/templates/admin/partials/single_post_attachments']({attachment_id: model.attachment_id}) %>
     </div>
   </div>
 </div>

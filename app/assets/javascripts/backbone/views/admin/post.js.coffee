@@ -1,6 +1,7 @@
 class App.Views.PostView extends Backbone.View
-  template: JST['backbone/templates/post'];
-  el: '#posts_table'
+  template: JST['backbone/templates/admin/post'];
+  tagName: 'tr'
+  className: 'gradeX odd'
   events:
     'click .fa-edit': 'go_to_edit'
     'click .post_title': 'go_to_edit'
@@ -8,9 +9,10 @@ class App.Views.PostView extends Backbone.View
     @listenTo @model, 'sync', @render
     this.delegateEvents(this.events)
   render: ->
-    @model.created_at = new Date(@model.created_at).toDateString()
-    @$el.append @template(@model.toJSON())
+    console.log @model.toJSON()
+    html = @template(@model.toJSON())
+    @$el.append html
     return this
   go_to_edit: (ev) ->
-    title = this.model.get("title")
-    console.log title
+    Backbone.history.navigate("admin/posts/" + @model.get('id') + "/edit", true)
+    # console.log title

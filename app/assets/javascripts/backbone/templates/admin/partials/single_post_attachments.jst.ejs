@@ -1,0 +1,28 @@
+<div class="grid simple">
+  <div class="grid-title no-border">
+    <h4>Featured <span class="semi-bold">Image</span></h4>
+  </div>
+  <div class="grid-body no-border">
+    <div class="row-fluid">
+      <div class="featured-image">
+        <%/*
+          by far one of the more harder spots
+          we need to have the authenticity_token for image uploading
+          becuase we nested out models we have to set the path
+
+          we go to attachment_controller#create
+          */
+        %>
+        <form class="upload" id="new_attachment" enctype="multipart/form-data" action="/admin/attachments" accept-charset="UTF-8" method="post">
+          <input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="JFsZ7ceC+tOWPIS3w3gIsFaYL4gcuLvDMydpb8+NF8QAVrnw5k1fHV3J3fYO8lc0X+W88GP8cXS/lo/YNbDG4A==">
+
+          <div class="fallback">
+            <input type="file" name="attachment[file]" id="attachment_file"><br>
+            <input type="submit" name="commit" value="Upload" disable_with="Loading...">
+          </div>
+        </form>
+        <input type="hidden" name="attachment_id">
+        </div>
+    </div>
+  </div>
+</div>

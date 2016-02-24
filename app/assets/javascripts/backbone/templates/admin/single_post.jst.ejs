@@ -1,0 +1,60 @@
+<div class="row-fluid">
+  <div class="span12">
+    <div class="col-md-12">
+      <div class="page-title">
+        <p id="notice">
+          <!-->notices</!-->
+        </p>
+        <!-- <i class="icon-custom-left"></i> admin_posts_path -->
+        <h3>Edit <span class="semi-bold">Post</span></h3>
+      </div>
+    </div>
+    <!-- errors -->
+    <div class="col-md-9 col-sm-9 col-xs-9">
+      <%/*= render :partial => "admin/posts/partials/title" */%>
+      <%= JST['backbone/templates/admin/partials/single_post_title']({title: model.title}) %>
+      <%/*= render :partial => "admin/posts/partials/content" */%>
+      <%= JST['backbone/templates/admin/partials/single_post_content']({content: model.content}) %>
+      <%/*= render :partial => "admin/posts/partials/excerpt" */%>
+      <%= JST['backbone/templates/admin/partials/single_post_excerpt']({excerpt: model.excerpt}) %>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3">
+      <div class="grid simple">
+        <div class="grid-title no-border">
+          <h4>Post <span class="semi-bold">Status</span></h4>
+        </div>
+        <div class="grid-body no-border">
+          <div class="row">
+            <%/*= render :partial => "admin/posts/partials/post_date" */%>
+            <%= JST['backbone/templates/admin/partials/single_post_post_date']({post_on: model.post_on}) %>
+          </div>
+          <div class="row">
+              <%/*= render :partial => "admin/posts/partials/status" */%>
+              <%= JST['backbone/templates/admin/partials/single_post_status']({status: model.status}) %>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12">
+              <div class="actions">
+                <button class="btn btn-block btn-success btn-cons <% model.id > 0 ? 'update' : 'publish' %>">
+                  <% if (model.id > 0) {%>
+                    Update
+                  <% }else{ %>
+                    Publish
+                  <% } %>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%/*= render :partial => "admin/posts/partials/categories" */%>
+      <%= JST['backbone/templates/admin/partials/single_post_categories']() %>
+      <%= JST['backbone/templates/admin/partials/single_post_attachments']() %>
+    </div>
+  </div>
+</div>
+
+
+
+

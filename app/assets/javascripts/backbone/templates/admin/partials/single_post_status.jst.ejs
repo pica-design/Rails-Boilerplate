@@ -1,0 +1,8 @@
+<div class="col-md-12">
+  <h5>Post <span class="semi-bold">Status</span></h5>
+  <select id="status" style="width:100%">
+    <option value="draft" <%= status != null && status == 'draft' ? 'selected="selected"' : ''%>>Draft</option>
+    <option value="published" <%= status != null && status == 'published' ? 'selected="selected"' : '' %>>Published</option>
+    <option value="pending" <%= status != null && status == 'selected' ? 'selected="selected"' : '' %>>Pending Review</option>
+  </select>
+</div>

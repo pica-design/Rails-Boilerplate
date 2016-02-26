@@ -9,7 +9,6 @@ class App.Views.PostView extends Backbone.View
     @listenTo @model, 'sync', @render
     this.delegateEvents(this.events)
   render: ->
-    console.log @model.toJSON()
     html = @template(@model.toJSON())
     @$el.append html
     return this

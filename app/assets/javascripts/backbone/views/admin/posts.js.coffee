@@ -4,6 +4,7 @@ class App.Views.PostsView extends Backbone.View
   events:
     'click .logo': 'logo'
     'click #back': 'go_back'
+    'click .new-post': 'new_post'
 
   initialize: ->
     @listenTo @collection, 'sync', @render
@@ -17,4 +18,5 @@ class App.Views.PostsView extends Backbone.View
     return this
   go_back: ->
     Backbone.history.history.back()
-    # Backbone.hi
+  new_post: ->
+    Backbone.history.navigate("/admin/posts/new", {trigger:true})

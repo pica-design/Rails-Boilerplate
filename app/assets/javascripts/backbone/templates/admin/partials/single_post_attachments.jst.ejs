@@ -14,7 +14,7 @@
           we go to attachment_controller#create
           */
         %>
-        <% if(attachment_id != null){%>
+        <% if(attachment_id == null){%>
         <form class="upload" id="new_attachment" enctype="multipart/form-data" action="/admin/attachments" accept-charset="UTF-8" method="post">
           <input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="<%= $('meta[name=csrf-token]').attr('content') %>">
           <div class="fallback">
@@ -23,6 +23,7 @@
           </div>
         </form>
         <% }else{ %>
+          <img src="">
         <% } %>
         </div>
     </div>

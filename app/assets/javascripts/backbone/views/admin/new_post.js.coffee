@@ -1,21 +1,21 @@
-class App.Views.SinglePostView extends Backbone.View
+class App.Views.NewPostView extends Backbone.View
   template: JST['backbone/templates/admin/single_post']
   el: '.page-content .content'
   events: ->
     "click .update": "update_post"
     "click .icon-custom-left": "go_back"
   initialize: ->
-    @listenTo @model, 'sync', @render
+    @listenTo @model, 'sync', @render()
   render: ->
-    console.log @model.toJSON()
-    if @model.attachment_id != null
-      attachment = new App.Models.Attachment({id: @model.attributes.attachment_id})
-      attachment.fetch()
-      date = new Date(@model.attributes.post_on)
+
+    # if @model.attachment_id != null
+      # attachment = new App.Models.Attachment({id: @model.attributes.attachment_id})
+      # attachment.fetch()
+      # date = new Date(@model.attributes.post_on)
       # tweak the date so it display correctly
-      @model.attributes.post_on = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear()
+      # @model.attributes.post_on = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear()
     # render the template with the attachment and model
-    @$el.html @template({attachment: attachment.toJSON(), model: @model.toJSON()})
+    @$el.html @template({model: @model.toJSON()})
     if $('.upload').length
       dropzone = new Dropzone('.upload',
         init: ->

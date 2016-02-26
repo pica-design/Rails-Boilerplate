@@ -3,20 +3,27 @@
     <div class="col-md-12">
       <div class="page-title">
         <p id="notice">
-          <!-->notices</!-->
         </p>
         <!-- <i class="icon-custom-left"></i> admin_posts_path -->
+        <i class="icon-custom-left"></i>
         <h3>Edit <span class="semi-bold">Post</span></h3>
       </div>
     </div>
     <!-- errors -->
     <div class="col-md-9 col-sm-9 col-xs-9">
-      <%/*= render :partial => "admin/posts/partials/title" */%>
+      <% if(model != null ){%>
       <%= JST['backbone/templates/admin/partials/single_post_title']({title: model.title, id: model.id}) %>
       <%/*= render :partial => "admin/posts/partials/content" */%>
       <%= JST['backbone/templates/admin/partials/single_post_content']({content: model.content}) %>
       <%/*= render :partial => "admin/posts/partials/excerpt" */%>
       <%= JST['backbone/templates/admin/partials/single_post_excerpt']({excerpt: model.excerpt}) %>
+      <% } else { %>
+      <%= JST['backbone/templates/admin/partials/single_post_title']() %>
+      <%/*= render :partial => "admin/posts/partials/content" */%>
+      <%= JST['backbone/templates/admin/partials/single_post_content']() %>
+      <%/*= render :partial => "admin/posts/partials/excerpt" */%>
+      <%= JST['backbone/templates/admin/partials/single_post_excerpt']() %>
+      <% } %>
     </div>
     <div class="col-md-3 col-sm-3 col-xs-3">
       <div class="grid simple">
@@ -49,8 +56,8 @@
         </div>
       </div>
       <%/*= render :partial => "admin/posts/partials/categories" */%>
-      <%= JST['backbone/templates/admin/partials/single_post_categories']() %>
-      <%= JST['backbone/templates/admin/partials/single_post_attachments']({attachment_id: model.attachment_id}) %>
+      <%= JST['backbone/templates/admin/partials/single_post_categories']({categories: model.categories}) %>
+      <%= JST['backbone/templates/admin/partials/single_post_attachments']({attachment_id: model.attachment_id, attachment: attachment}) %>
     </div>
   </div>
 </div>

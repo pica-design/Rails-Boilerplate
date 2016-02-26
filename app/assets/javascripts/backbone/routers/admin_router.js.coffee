@@ -2,7 +2,7 @@ class App.Routers.AdminRouter extends Backbone.Router
   routes:
     '': 'index',
     'admin/posts': 'view_posts'
-    'admin/posts/new': 'post',
+    'admin/posts/new': 'new_post',
     'admin/posts/:id/edit': 'post',
     'contact': 'contact'
   initialize: ->
@@ -21,3 +21,5 @@ class App.Routers.AdminRouter extends Backbone.Router
     post.fetch()
     window.postView = new App.Views.SinglePostView({model: post})
     # window.postView.render()
+  new_post: ->
+    window.newPost = new App.Views.NewPostView({model: null})

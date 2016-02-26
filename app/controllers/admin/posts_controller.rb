@@ -16,16 +16,11 @@ class Admin::PostsController < Admin::BaseController
   # GET /admin/posts/new
   def new
     @post = Post.new
-    @attachment = Attachment.new
   end
 
   # GET /admin/posts/1/edit
   def edit
-    if @post.attachment_id != nil
-      @attachment = Attachment.find(@post.attachment_id)
-    else
-      @attachment = Attachment.new
-    end
+
   end
 
   # POST /admin/posts
@@ -61,24 +56,22 @@ class Admin::PostsController < Admin::BaseController
   # PATCH/PUT /admin/posts/1
   # PATCH/PUT /admin/posts/1.json
   def update
-    # byebug
     Array @post.attributes = {
-      title: params[:title],
-      excerpt: params[:excerpt],
-      content: params[:content],
-      status: params[:status],
-      menu_order: params[:menu_order],
-      attachment_id: params[:attachment_id],
-      parent: params[:parent],
-      post_on: Date.strptime(params[:post_on],"%m/%d/%Y").to_s
+      title: params[:post][:title],
+      excerpt: params[:post][:excerpt],
+      content: params[:post][:content],
+      status: params[:post][:status],
+      menu_order: params[:post][:menu_order],
+      attachment_id: params[:post][:attachment_id],
+      parent: params[:post][:parent],
+      post_on: Date.strptime(params[:post][:post_on],"%m/%d/%Y").to_s
     }
     respond_to do |format|
       if (@post.save)
-        format.json { render json: {
-          :post => @post,
+        format.json { render json: @post
           # only send one because we can do a quick search replace to change the path
           # go to post_new_js BackBone
-        }, status: :updated}
+        }
         format.html { redirect_to admin_post_url(@post.id), notice: 'Post was successfully updated.' }
       else
         format.html { render :new }
